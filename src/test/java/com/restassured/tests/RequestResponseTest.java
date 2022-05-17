@@ -8,6 +8,7 @@ import static io.restassured.RestAssured.given;
 
 public class RequestResponseTest extends TestBase{
 
+
     @Test
     public void singleUserGet(){
         given()
