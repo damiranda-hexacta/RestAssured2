@@ -1,4 +1,4 @@
-package com.restassured.automation.utils;
+package com.restassured.automation.helpers;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -28,7 +28,7 @@ public class SpecialMethods {
         BufferedReader bufferedReader;
         try {
             fileReader = new FileReader("src/main/resources/test_data/validations.txt");
-            if (fileReader.ready()) {
+            if (fileReader.ready()){
                 bufferedReader = new BufferedReader(fileReader);
                 validationGetName = bufferedReader.readLine();
                 validationGetLastName = bufferedReader.readLine();
@@ -42,7 +42,7 @@ public class SpecialMethods {
                 System.out.println("File could not be uploaded");
             }
         }
-        catch (IOException e) {
+        catch (IOException e){
             System.out.println("Error: " + e.getMessage());
         }
     }

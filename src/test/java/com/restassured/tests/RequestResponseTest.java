@@ -1,16 +1,16 @@
 package com.restassured.tests;
-
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Test;
 import static org.hamcrest.Matchers.*;
-import static com.restassured.automation.utils.SpecialMethods.*;
+import static com.restassured.automation.helpers.SpecialMethods.*;
 import static io.restassured.RestAssured.given;
 
-public class RequestResponseTest extends TestBase{
+
+public class RequestResponseTest extends TestBase {
 
 
     @Test
-    public void singleUserGet(){
+    public void testSingleUserGet(){
         given()
             .get(properties.getProperty("endpointGetSingleUser"))
             .then()
@@ -22,7 +22,7 @@ public class RequestResponseTest extends TestBase{
 
 
     @Test
-    public void loginTestPost(){
+    public void testLoginPost(){
         given()
             .body("{\n" +
                     "    \"email\": \"eve.holt@reqres.in\",\n" +
@@ -50,7 +50,7 @@ public class RequestResponseTest extends TestBase{
 
 
     @Test
-    public void userDelete(){
+    public void testUserDelete(){
         given()
             .delete(properties.getProperty("endpointGetSingleUser"))
             .then()
@@ -59,7 +59,7 @@ public class RequestResponseTest extends TestBase{
 
 
     @Test
-    public void updateUserPatch(){
+    public void testUpdateUserPatch(){
        given()
            .body("{\n" +
                    "    \"name\": \"Daniel\"}")
@@ -71,7 +71,7 @@ public class RequestResponseTest extends TestBase{
 
 
     @Test
-    public void updateUserPut(){
+    public void testUpdateUserPut(){
        given()
            .body("{\n" +
                    "    \"name\": \"morpheus\",\n" +
