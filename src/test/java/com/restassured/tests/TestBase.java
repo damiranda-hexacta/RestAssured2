@@ -9,6 +9,7 @@ import static com.restassured.automation.helpers.SpecialMethods.*;
 
 public class TestBase {
 
+
     @BeforeEach
     public void setUp(){
         configPropertiesRead();
@@ -18,5 +19,6 @@ public class TestBase {
         RestAssured.filters(new RequestLoggingFilter(),new ResponseLoggingFilter());
         RestAssured.requestSpecification = new RequestSpecBuilder().setContentType(ContentType.JSON).build();
     }
+
 
 }
