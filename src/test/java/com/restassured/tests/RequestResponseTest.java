@@ -1,4 +1,5 @@
 package com.restassured.tests;
+import com.restassured.automation.models.ValidationsData;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Test;
 import static org.hamcrest.Matchers.*;
@@ -8,6 +9,8 @@ import static io.restassured.RestAssured.given;
 
 public class RequestResponseTest extends TestBase {
 
+    ValidationsData validationsData = new ValidationsData();
+
 
     @Test
     public void testSingleUserGet(){
@@ -15,9 +18,9 @@ public class RequestResponseTest extends TestBase {
             .get(properties.getProperty("endpointGetSingleUser"))
             .then()
             .statusCode(HttpStatus.SC_OK)
-            .body("data.first_name", equalTo(validationGetName))
-            .body("data.last_name", equalTo(validationGetLastName))
-            .body("data.id",equalTo(Integer.valueOf(validationGetId)));
+            .body("data.first_name", equalTo(validationsData.getValidationGetName()))
+            .body("data.last_name", equalTo(validationsData.getValidationGetLastName()))
+            .body("data.id",equalTo(Integer.valueOf(validationsData.getValidationGetId())));
     }
 
 
@@ -31,7 +34,7 @@ public class RequestResponseTest extends TestBase {
             .post(properties.getProperty("endpointPostLogin"))
             .then()
             .statusCode(HttpStatus.SC_OK)
-            .body("token", equalTo(validationGetToken));
+            .body("token", equalTo(validationsData.getValidationGetToken()));
     }
 
 
@@ -45,7 +48,7 @@ public class RequestResponseTest extends TestBase {
            .post(properties.getProperty("createUserPath"))
            .then()
            .statusCode(HttpStatus.SC_CREATED)
-           .body("job", equalTo(validationPostJob));
+           .body("job", equalTo(validationsData.getValidationPostJob()));
     }
 
 
@@ -66,7 +69,7 @@ public class RequestResponseTest extends TestBase {
            .patch(properties.getProperty("endpointGetSingleUser"))
            .then()
            .statusCode(HttpStatus.SC_OK)
-           .body("name",equalTo(validationPatchName));
+           .body("name",equalTo(validationsData.getValidationPatchName()));
     }
 
 
@@ -80,7 +83,7 @@ public class RequestResponseTest extends TestBase {
            .put(properties.getProperty("endpointGetSingleUser"))
            .then()
            .statusCode(HttpStatus.SC_OK)
-           .body("job",equalTo(validationPutJob));
+           .body("job",equalTo(validationsData.getValidationPutJob()));
     }
 
 }

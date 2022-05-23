@@ -13,7 +13,6 @@ public class TestBase {
     @BeforeEach
     public void setUp(){
         configPropertiesRead();
-        readTxtFile();
         RestAssured.baseURI = properties.getProperty("baseUrl");
         RestAssured.basePath = properties.getProperty("basePath");
         RestAssured.filters(new RequestLoggingFilter(),new ResponseLoggingFilter());
